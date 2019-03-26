@@ -14,7 +14,7 @@ public class Graph {
         return getPaths(node, new ArrayList(), new Stack(), new HashSet());
     }
 
-    public ArrayList getPaths(GNode source, ArrayList paths, Stack path, Set onPath){
+    private ArrayList getPaths(GNode source, ArrayList paths, Stack path, Set onPath){
         //functional approach
         path.push(source);
         onPath.add(source);
