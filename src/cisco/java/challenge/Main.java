@@ -50,7 +50,7 @@ public class Main {
         System.out.print("Testing the walkGraph method: ");
         System.out.println(graph.walkGraph(node));
         System.out.print("Testing the paths method:     ");
-        System.out.println(graph.paths(node, new ArrayList(), new Stack(), new HashSet()));
+        System.out.println(graph.paths(node));
 
     }
 

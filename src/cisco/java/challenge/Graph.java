@@ -10,9 +10,11 @@ public class Graph {
 
 
 
+    public ArrayList paths(GNode node){
+        return getPaths(node, new ArrayList(), new Stack(), new HashSet());
+    }
 
-
-    public ArrayList paths(GNode source, ArrayList paths, Stack path, Set onPath){
+    public ArrayList getPaths(GNode source, ArrayList paths, Stack path, Set onPath){
         //functional approach
         path.push(source);
         onPath.add(source);
@@ -23,7 +25,7 @@ public class Graph {
         }
         else {
             for (GNode node : source.getChildren()) {
-                if (!onPath.contains(node)) paths(node, paths, path, onPath);
+                if (!onPath.contains(node)) getPaths(node, paths, path, onPath);
             }
         }
         path.pop();
