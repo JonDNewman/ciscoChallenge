@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -60,7 +62,7 @@ class GraphTest {
     @org.junit.jupiter.api.Test
     void testPaths() {
 
-        assertEquals(6, graph.paths(node).size()
+        assertEquals(6, graph.paths(node,new ArrayList(), new Stack(), new HashSet()).size()
         );
     }
 
@@ -73,7 +75,7 @@ class GraphTest {
         nodeA.setChildren(new GNode[]{nodeB});
         nodeB.setChildren(new GNode[]{nodeA});
 
-        ArrayList<ArrayList<GNode>> paths = graph.paths(nodeA);
+        ArrayList<ArrayList<GNode>> paths = graph.paths(nodeA, new ArrayList(), new Stack(), new HashSet());
 
         assertEquals(0, paths.size());
 
@@ -84,7 +86,7 @@ class GraphTest {
     @Test
     void pathsShouldReturnListOfItemOnSingleGNode(){
 
-        assertEquals(1, graph.paths(new Node("A", new GNode[0])).size());
+        assertEquals(1, graph.paths(new Node("A", new GNode[0]),new ArrayList(), new Stack(), new HashSet()).size());
 
     }
 

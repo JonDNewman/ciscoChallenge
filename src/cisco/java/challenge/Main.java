@@ -2,6 +2,9 @@ package cisco.java.challenge;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
 
 public class Main {
 
@@ -47,7 +50,7 @@ public class Main {
         System.out.print("Testing the walkGraph method: ");
         System.out.println(graph.walkGraph(node));
         System.out.print("Testing the paths method:     ");
-        System.out.println(graph.paths(node));
+        System.out.println(graph.paths(node, new ArrayList(), new Stack(), new HashSet()));
 
     }
 

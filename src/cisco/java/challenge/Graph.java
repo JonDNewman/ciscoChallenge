@@ -8,6 +8,30 @@ import java.util.Stack;
 
 public class Graph {
 
+
+
+
+
+    public ArrayList paths(GNode source, ArrayList paths, Stack path, Set onPath){
+        //functional approach
+        path.push(source);
+        onPath.add(source);
+
+        if(source.getChildren().length==0){
+            paths.add(new ArrayList<>(path));
+
+        }
+        else {
+            for (GNode node : source.getChildren()) {
+                if (!onPath.contains(node)) paths(node, paths, path, onPath);
+            }
+        }
+        path.pop();
+        onPath.remove(source);
+        return paths;
+
+    }
+
     public ArrayList walkGraph(GNode node){
         //DFS
         if(node.getChildren().length==0)
@@ -35,45 +59,7 @@ public class Graph {
         }
         return nodeList;
     }
-    public ArrayList paths(GNode node){
-        GraphUtil gu = new GraphUtil();
-        return gu.findPaths(node).getPaths();
-    }
 
 }
 
-class GraphUtil {
-
-    private final ArrayList<ArrayList<GNode>> paths = new ArrayList<>();
-    private final Stack<GNode> path = new Stack<>();
-    private final Set<GNode> onPath= new HashSet<>();
-
-    public ArrayList getPaths() {
-        return paths;
-    }
-
-    public GraphUtil findPaths(GNode source){
-        findAllPaths(source);
-        return this;
-    }
-    private void findAllPaths(GNode source){
-        path.push(source);
-        onPath.add(source);
-
-        if(source.getChildren().length==0){
-            paths.add(new ArrayList<>(path));
-
-        }
-        else {
-            for (GNode node : source.getChildren()) {
-                if (!onPath.contains(node)) findAllPaths(node);
-            }
-        }
-        path.pop();
-        onPath.remove(source);
-
-    }
-
-
-}
 
